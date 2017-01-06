@@ -13,18 +13,15 @@ HOST, PORT = "127.0.0.1", 9999
 
 #Custom variables
 name = "Johnny 5"
+channel = "#general"
 
-#Feel free to change the channel, username, emoji here:
+
 def slackpost(msg):
-	slack_data = {'channel': '#general', 'username': name, 'text': msg, 'icon_emoji': ':ghost:'}
+	slack_data = {'channel': channel, 'username': name, 'text': msg, 'icon_emoji': ':ghost:'}
 	response = requests.post(
     	webhook_url, data=json.dumps(slack_data),
     	headers={'Content-Type': 'application/json'}
 )
-
-#End of stuff you need to configure :-)
-
-
 
 class MyUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
